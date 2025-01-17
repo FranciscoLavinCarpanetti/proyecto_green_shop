@@ -28,7 +28,7 @@ proyecto_green_shop/
 - **src/css/reset.css**: Archivo CSS para resetear los estilos por defecto del navegador.
 - **src/css/style.css**: Archivo CSS principal que importa otros estilos y fuentes.
 - **src/index.html**: Archivo HTML principal del proyecto.
-- **src/js/data.js**: Archivo JavaScript que contiene los datos de los productos.
+- **src/js/data.js**: Archivo JavaScript que contiene los datos de los productos array.
 - **src/js/view.js**: Archivo JavaScript para la lógica de la vista.
 
 ## Instalación
@@ -36,7 +36,7 @@ proyecto_green_shop/
 1. Clona el repositorio:
 
     ```sh
-    git clone <URL_DEL_REPOSITORIO>
+    git clone <https://github.com/FranciscoLavinCarpanetti/proyecto_green_shop.git>
     ```
 
 2. Navega al directorio del proyecto:
