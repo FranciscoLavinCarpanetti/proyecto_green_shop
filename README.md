@@ -36,7 +36,7 @@ proyecto_green_shop/
 1. Clona el repositorio:
 
     ```sh
-    git clone <URL_DEL_REPOSITORIO>
+    git clone <[URL_DEL_REPOSITORIO](https://github.com/FranciscoLavinCarpanetti/proyecto_green_shop.git)>
     ```
 
 2. Navega al directorio del proyecto:
