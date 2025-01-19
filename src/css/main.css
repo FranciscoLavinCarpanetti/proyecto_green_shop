@@ -1,0 +1,15 @@
+
+#plantas {
+    max-width: 78.125rem;
+    margin: 0 auto ;
+    padding: 1.25rem;
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.25rem;
+    }
+}
+article{
+    text-align: center;
+    border-radius: 10px solid var(--secondary-color);
+}
