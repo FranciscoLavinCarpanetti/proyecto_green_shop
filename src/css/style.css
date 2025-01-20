@@ -65,3 +65,25 @@
         margin-right: 20px; /* Agrega margen derecho para separar los iconos */
     }
 }
+/* Estilos para pantallas grandes */
+@media (min-width: 1004px) {
+    header {
+        padding: 1.25rem 2rem;
+    }
+
+    header h2 {
+        font-size: 5rem; /* Texto grande para pantallas grandes */
+    }
+
+    header nav ul li {
+        margin-left: 1.25rem;
+    }
+
+    header .iconos a {
+        margin-left: 1.5rem; /* Más espacio entre íconos */
+    }
+
+    #plantas .grid {
+        grid-template-columns: repeat(4, 1fr); /* Cambia a 4 columnas */
+    }
+}
