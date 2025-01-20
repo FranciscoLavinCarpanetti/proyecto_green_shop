@@ -5,8 +5,22 @@
 @import url(layout.css);
 @import url(header.css);
 @import url(main.css);
+@import url(footer.css);
 
 
+
+.btn-final{
+    background-color: var(--primary-color);
+    color: #fff;
+    gap: 1.5rem;
+   
+}
+.btn-fina2{
+    background-color: var(--primary-color);
+    color: #fff;
+    gap: 1.5rem;
+   
+}
 
 
 @media(min-width: 768px) {
