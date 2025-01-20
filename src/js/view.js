@@ -27,9 +27,9 @@ function printPlants(products, dom) {
     
 printPlants(productos, grid);/**/
 
-const grid = document.querySelector('.grid');
+const grid = document.querySelector('#plantas .grid');
 
-function printOnePlant(product, dom) {
+/**function printOnePlant(product, dom) {
     const article = document.createElement('article');
     article.classList.add(product.categoria);
 
@@ -75,5 +75,52 @@ select.addEventListener('change', (event) => {
 });
 
 // Pintar todas las plantas al cargar la página
-printAllPlants(productos, grid);
+printAllPlants(productos, grid);*/
+
+function printOnePlant(product, dom) {
+    const article = document.createElement('article');
+    article.classList.add(product.categoria);
+    const figure = document.createElement('figure');
+    const img = document.createElement('img');
+    img.src = product.imagen; // Asegúrate de que 'imagen' sea la propiedad correcta
+    img.alt = product.nombre;
+    const h3 = document.createElement('h3');
+    h3.textContent = product.nombre;
+    const ul = document.createElement('ul');
+    ul.innerHTML = `<li>${product.descripcion}</li>
+                    <li>Precio: €${product.precio}</li>
+                    <li>Stock: ${product.stock} unidades</li>`;
+    const button = document.createElement('button');
+    button.textContent = 'Agregar al carrito';
+    figure.append(img, h3, ul, button);
+    article.appendChild(figure);
+    dom.appendChild(article);
+}
+console.log(productos);
+
+function printPlants(products, dom) {
+    dom.innerHTML = '';
+    if (products.length > 0) {
+        products.forEach(product => printOnePlant(product, dom));
+    } else { 
+        dom.innerHTML = '<p>No hay productos disponibles</p>';
+    }
+}
+
+//** Pintar todas las plantas al cargar el html
+printPlants(productos, grid);
+
+
+function filterPlants(category) {
+    if (category === 'todas') {
+        printPlants(productos, grid);
+    } else {
+        const filteredProducts = productos.filter(product => product.categoria.toLowerCase().includes(category.toLowerCase()));
+        printPlants(filteredProducts, grid);
+    }
+}
+
+    
+    
+
 

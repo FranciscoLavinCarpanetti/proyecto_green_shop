@@ -34,3 +34,10 @@ const productos = [
   ];
 
 
+function filterProducts(category) {
+    if (category === 'todas') {
+        return productos;
+    } else {
+        return productos.filter(product => product.categoria.toLowerCase().includes(category.toLowerCase()));
+    }
+}
