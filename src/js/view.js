@@ -120,6 +120,12 @@ function filterPlants(category) {
     }
 }
 
+// Agregar event listener al select
+const select = document.getElementById('tipoPlanta');
+select.addEventListener('change', (event) => {
+    const category = event.target.value;
+    filterPlants(category);
+});
     
     
 
