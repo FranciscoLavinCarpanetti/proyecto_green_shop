@@ -3,13 +3,13 @@ const productos = [
       categoria: "flor blanca."
     },
     { id: 2, nombre: "Rosa roja", imagen: "https://images.pexels.com/photos/2300713/pexels-photo-2300713.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Rosa clásica de pétalos aterciopelados de color rojo intenso. Símbolo del amor y la pasión.", precio: 12.50, stock: 30, categoria: "flor color." },
-    { id: 3, nombre: "Tulipán amarillo", imagen: "https://images.pexels.com/photos/53529/tulip-spring-flowers-yellow-53529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor de tallo largo y pétalos amarillos vibrantes, perfecta para alegrar cualquier espacio.", precio: 8.00, stock: 25, categoria: "flor color." },
+    { id: 3, nombre: "Tulipán amarillo", imagen: "https://images.pexels.com/photos/3834461/pexels-photo-3834461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor de tallo largo y pétalos amarillos vibrantes, perfecta para alegrar cualquier espacio.", precio: 8.00, stock: 25, categoria: "flor color." },
     { id: 4, nombre: "Margarita blanca", imagen: "https://images.pexels.com/photos/122957/pexels-photo-122957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor sencilla y alegre de pétalos blancos y centro amarillo, símbolo de pureza.", precio: 6.00, stock: 50, categoria: "flor blanca." },
     { id: 5, nombre: "Orquídea morada", imagen: "https://images.pexels.com/photos/20233861/pexels-photo-20233861/free-photo-of-naturaleza-flores-purpura-morado.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor exótica con pétalos de color morado vibrante y detalles delicados, ideal para decoración.", precio: 18.00, stock: 15, categoria: "flor color." },
     { id: 6, nombre: "Girasol", imagen: "https://images.pexels.com/photos/1427855/pexels-photo-1427855.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor grande de pétalos amarillos que sigue la luz del sol. Perfecta para ambientes cálidos y alegres.", precio: 14.00, stock: 10, categoria: "planta." },
     { id: 7, nombre: "Clavel rosa", imagen: "https://images.pexels.com/photos/6798400/pexels-photo-6798400.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor tradicional con pétalos rizados y color rosa suave. Ideal para regalos y arreglos florales.", precio: 7.50, stock: 40, categoria: "flor color." },
     { id: 8, nombre: "Peonía blanca", imagen: "https://images.pexels.com/photos/8532765/pexels-photo-8532765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor grande y fragante con pétalos blancos delicados. Ideal para centros de mesa elegantes.", precio: 20.00, stock: 12, categoria: "flor blanca." },
-    { id: 9, nombre: "Azucena roja", imagen: "ihttps://images.pexels.com/photos/18021745/pexels-photo-18021745/free-photo-of-naturaleza-planta-flor-crecimiento.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor de pétalos rojos vibrantes y un aroma embriagador, perfecta para regalar.", precio: 16.00, stock: 18, categoria: "flor color." },
+    { id: 9, nombre: "Azucena roja", imagen: "https://images.pexels.com/photos/18021745/pexels-photo-18021745/free-photo-of-naturaleza-planta-flor-crecimiento.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor de pétalos rojos vibrantes y un aroma embriagador, perfecta para regalar.", precio: 16.00, stock: 18, categoria: "flor color." },
     { id: 10, nombre: "Jazmín", imagen: "https://images.pexels.com/photos/7999920/pexels-photo-7999920.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Pequeña flor blanca con un aroma dulce y delicado, ideal para infusiones o decoración.", precio: 5.00, stock: 60, categoria: "arbusto." },
     { id: 11, nombre: "Rosa amarilla", imagen: "https://images.pexels.com/photos/30271922/pexels-photo-30271922/free-photo-of-rosas-amarillas-romanticas-con-ambiente-de-velas.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Rosa de pétalos amarillos brillantes, símbolo de amistad y alegría. Ideal para regalar.", precio: 12.00, stock: 25, categoria: "flor color." },
   { id: 12, nombre: "Clavel blanco", imagen: "https://images.pexels.com/photos/6806944/pexels-photo-6806944.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor tradicional con pétalos blancos puros, perfecta para eventos elegantes y arreglos florales.", precio: 7.00, stock: 35, categoria: "flor blanca." },
@@ -34,10 +34,61 @@ const productos = [
   ];
 
 
-function filterProducts(category) {
-    if (category === 'todas') {
-        return productos;
-    } else {
-        return productos.filter(product => product.categoria.toLowerCase().includes(category.toLowerCase()));
-    }
-}
+  const productsPerPage = 20; // Número de productos por página
+  let currentPage = 1;
+  
+  // Referencias al DOM
+  const productGrid = document.getElementById(".flex");
+  const prevPageBtn = document.getElementById("btn btn-outline-success Anterior");
+  const nextPageBtn = document.getElementById("btn btn-outline-success posterior");
+  
+  // Función para renderizar los productos en la página actual
+  function renderProducts(page) {
+      // Calcular índices
+      const startIndex = (page - 1) * productsPerPage;
+      const endIndex = startIndex + productsPerPage;
+  
+      // Obtener productos para la página actual
+      const currentProducts = productos.slice(startIndex, endIndex);
+  
+      // Limpiar el grid y renderizar productos
+      productGrid.innerHTML = "";
+      currentProducts.forEach(product => {
+          productGrid.innerHTML += `
+              <article>
+                  <figure>
+                      <img src="${product.imagen}" alt="${product.nombre}">
+                  </figure>
+                  <h3>${product.nombre}</h3>
+                  <ul>
+                      <li>${product.descripcion}</li>
+                      <li>Precio: €${product.precio.toFixed(2)}</li>
+                  </ul>
+                  <button>Agregar al carrito</button>
+              </article>
+          `;
+      });
+  
+      // Desactivar/activar botones según la página actual
+      prevPageBtn.disabled = page === 1;
+      nextPageBtn.disabled = endIndex >= productos.length;
+  }
+  
+  // Event Listeners para botones de paginación
+  prevPageBtn.addEventListener("click", () => {
+      if (currentPage > 1) {
+          currentPage--;
+          renderProducts(currentPage);
+      }
+  });
+  
+  nextPageBtn.addEventListener("click", () => {
+      if (currentPage * productsPerPage < productos.length) {
+          currentPage++;
+          renderProducts(currentPage);
+      }
+  });
+  
+  // Renderizar la primera página al cargar
+  renderProducts(currentPage);
+  

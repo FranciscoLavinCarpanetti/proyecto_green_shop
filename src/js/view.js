@@ -27,7 +27,7 @@ function printPlants(products, dom) {
     
 printPlants(productos, grid);/**/
 
-const grid = document.querySelector('#plantas .grid');
+/*const grid = document.querySelector('#plantas .grid');
 
 /**function printOnePlant(product, dom) {
     const article = document.createElement('article');
@@ -77,7 +77,7 @@ select.addEventListener('change', (event) => {
 // Pintar todas las plantas al cargar la página
 printAllPlants(productos, grid);*/
 
-function printOnePlant(product, dom) {
+/**function printOnePlant(product, dom) {
     const article = document.createElement('article');
     article.classList.add(product.categoria);
     const figure = document.createElement('figure');
@@ -96,9 +96,9 @@ function printOnePlant(product, dom) {
     article.appendChild(figure);
     dom.appendChild(article);
 }
-console.log(productos);
+/**console.log(productos);*/
 
-function printPlants(products, dom) {
+/**function printPlants(products, dom) {
     dom.innerHTML = '';
     if (products.length > 0) {
         products.forEach(product => printOnePlant(product, dom));
@@ -127,6 +127,82 @@ select.addEventListener('change', (event) => {
     filterPlants(category);
 });
     
-    
+function addToCart(product) {
+    const existingProduct = cart.find(item => item.id === product.id);
+    if (existingProduct) {
+        existingProduct.quantity += 1;
+    } else {
+        cart.push({ ...product, quantity: 1 });
+    }
+    console.log(cart); // Para verificar que el producto se ha agregado correctamente
+    updateCartUI();
+}
 
+function updateCartUI() {
+    const cartContainer = document.querySelector('#cart');
+    cartContainer.innerHTML = '';
+    cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+            <p>${item.nombre} - ${item.quantity} x €${item.precio}</p>
+        `;
+        cartContainer.appendChild(cartItem);
+    });
+} */ 
+
+// Array de productos importado desde data.js
+const contenedorPlantas = document.querySelector("#plantas .grid");
+
+// Función para renderizar los productos
+function imprimirProductos(productos) {
+  // Limpiar el contenedor antes de agregar productos
+  contenedorPlantas.innerHTML = "";
+
+  productos.forEach((producto) => {
+    // Crear el artículo para cada producto
+    const articulo = document.createElement("article");
+
+    // Contenido dinámico del artículo
+    articulo.innerHTML = `
+      <figure>
+        <img src="${producto.imagen}" alt="${producto.nombre}" class="img-fluid">
+      </figure>
+      <h3>${producto.nombre}</h3>
+      <ul>
+        <li>${producto.descripcion}</li>
+        <li>Precio: €${producto.precio.toFixed(2)}</li>
+        <li>Stock: ${producto.stock}</li>
+      </ul>
+      <button class="btn btn-success" data-id="${producto.id}">Agregar al carrito</button>
+    `;
+
+    // Agregar el artículo al contenedor
+    contenedorPlantas.appendChild(articulo);
+  });
+}
+
+// Llamar a la función para mostrar todos los productos al cargar la página
+imprimirProductos(productos);
+
+const productsPerPage = 20; // Número de productos por página
+  let currentPage = 1;
+  
+  // Referencias al DOM
+  const buttonNext = document.getElementById(".flex");
+  const sectionProducts = document.getElementById("#plantas .grid");
+  const selectTipo = document.getElementById("#tipoPlanta");
+
+  function goToPage(event) {
+    init(event.target.dataset.page);
+  }
+  buttons.forEach(button => 
+    button.addEventListener("click", goToPage));
+
+  function obtenerTipoProductos (event) {
+    let tipo = event.target.value;
+    let productosFiltrados = productos;
+  }
+  
+  selectTipo.addEventListener("change", obtenerTipoProductos);
 
