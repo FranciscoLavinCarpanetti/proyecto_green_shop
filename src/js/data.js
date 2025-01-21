@@ -33,5 +33,3 @@ const productos = [
   { id: 30, nombre: "Verbena morada", imagen: "https://images.pexels.com/photos/30259490/pexels-photo-30259490/free-photo-of-primer-plano-de-una-margarita-africana-morada-en-flor.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor pequeña y aromática con pétalos morados, ideal para jardines y decoraciones exteriores.", precio: 7.00, stock: 50, categoria: "flor color." },
   ];
 
-
-  
