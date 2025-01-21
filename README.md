@@ -1,64 +1,91 @@
-# Proyecto Green Shop
+# Green Shop
 
-Este proyecto es una tienda en línea de flores llamada "Green Shop".
+[Green Shop]
+(<https://images.pexels.com/photos/8789648/pexels-photo-8789648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1>)
+
+## Descripción
+
+Green Shop es una tienda en línea dedicada a la venta de plantas y flores. Ofrecemos una amplia variedad de productos, desde flores blancas hasta plantas exóticas, para decorar y alegrar cualquier espacio.
+
+## Características
+
+- **Catálogo de productos**: Navega por nuestra selección de plantas y flores.
+- **Carrito de compras**: Agrega productos al carrito y realiza compras fácilmente.
+- **Filtrado por categoría**: Encuentra productos por tipo de planta.
+- **Diseño responsivo**: Adaptado para verse bien en cualquier dispositivo.
+
+## Tecnologías Utilizadas
+
+- **HTML5**: Estructura del sitio web.
+- **CSS3**: Estilos y diseño visual.
+- **JavaScript**: Funcionalidad interactiva.
+- **Bootstrap**: Framework CSS para diseño responsivo.
+- **Font Awesome**: Iconos para mejorar la interfaz de usuario.
 
 ## Estructura del Proyecto
 
-proyecto_green_shop/
+El proyecto está organizado de la siguiente manera:
+
+Green Shop
+├── .gitignore
 ├── README.md
-├── src/ │
-├── .gitignore │
-├── assets/ │
-│ └── images/ │
- ├── css/ │
- │ ├── layout.css │
- │ ├── reset.css │
-  │ └── style.css │
-  ├── index.html │
-   ├── js/ │
-   │ ├── data.js │
-   │ └── view.js
-
-## Descripción de Archivos
-
-- **README.md**: Este archivo, contiene la descripción del proyecto.
-- **src/.gitignore**: Archivo para ignorar archivos y carpetas en el control de versiones.
-- **src/assets/images/**: Carpeta para almacenar imágenes del proyecto.
-- **src/css/layout.css**: Archivo CSS para el diseño de la página.
-- **src/css/reset.css**: Archivo CSS para resetear los estilos por defecto del navegador.
-- **src/css/style.css**: Archivo CSS principal que importa otros estilos y fuentes.
-- **src/index.html**: Archivo HTML principal del proyecto.
-- **src/js/data.js**: Archivo JavaScript que contiene los datos de los productos array.
-- **src/js/view.js**: Archivo JavaScript para la lógica de la vista.
+├── src/
+│   ├── assets/
+│   │   ├── images/
+│   ├── css/
+│   │   ├── footer.css
+│   │   ├── header.css
+│   │   ├── layout.css
+│   │   ├── main.css
+│   │   ├── reset.css
+│   │   └── style.css
+│   ├── js/
+│   │   ├── data.js
+│   │   └── view.js
+│   └── green-shop.html
 
 ## Instalación
 
 1. Clona el repositorio:
 
     ```sh
-    git clone <https://github.com/FranciscoLavinCarpanetti/proyecto_green_shop.git>
+    git clone https://github.com/FranciscoLavinCarpanetti/proyecto_green_shop.git
     ```
 
 2. Navega al directorio del proyecto:
 
     ```sh
-    cd proyecto_green_shop/src
+    cd green-shop/src
     ```
+
+3. Abre `green-shop.html` en tu navegador para ver el proyecto en acción.
 
 ## Uso
 
-Abre el archivo [index.html](http://_vscodecontentref_/8) en tu navegador para ver la tienda en línea.
+- **Navegación**: Utiliza el menú de navegación para explorar las diferentes secciones del sitio.
+- **Filtrado**: Selecciona una categoría en el menú desplegable para filtrar los productos.
+- **Carrito de compras**: Agrega productos al carrito y procede a la compra o vacía el carrito según sea necesario.
 
 ## Contribución
 
-Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
+¡Las contribuciones son bienvenidas! Si deseas contribuir, por favor sigue estos pasos:
 
-1. Haz un fork del repositorio.
+1. Haz un fork del proyecto.
 2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
 3. Realiza tus cambios y haz commit (`git commit -am 'Agrega nueva funcionalidad'`).
-4. Sube tus cambios a tu fork (`git push origin feature/nueva-funcionalidad`).
-5. Crea un Pull Request.
+4. Sube tus cambios (`git push origin feature/nueva-funcionalidad`).
+5. Abre un Pull Request.
 
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
+Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+## Contacto
+
+- **Email**: <contacto@greenshop.com>
+- **Teléfono**: +34 123 456 789
+- **Sitio web**: [Green Shop](https://www.greenshop.com)
+
+---
+
+¡Gracias por visitar Green Shop! 🌿
