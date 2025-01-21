@@ -154,7 +154,15 @@ function updateCartUI() {
 // Array de productos importado desde data.js
 
 
-    const contenedorPlantas = document.querySelector("#plantas .grid");
+
+
+
+
+
+
+
+
+const contenedorPlantas = document.querySelector("#plantas .grid");
 
     if (contenedorPlantas) {
         productos.forEach(producto => {
@@ -374,3 +382,10 @@ printPlants(productos, grid);*/
   });
   
 
+
+  document.getElementById("add-to-cart").addEventListener("click", function () {
+    const cart = document.getElementById("cart");
+    cart.classList.remove("hidden");
+    cart.classList.add("visible");
+});
+    
