@@ -1,6 +1,6 @@
 footer{
     background-color: var(--primary-color);
-    color: #fff;
+    color: rgb(255, 255, 255);
     padding: 1rem;
     text-align: center;
     font-size: 1.2rem;
@@ -13,7 +13,7 @@ footer{
 }
 .btn-final{
     background-color: var(--primary-color);
-    color: #fff;
+    color: rgb(255, 255, 255);
     gap: 1.5rem;
    
 }

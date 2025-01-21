@@ -1,8 +1,8 @@
 body {
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.6;
-    color: black;
+    color: rgb(0, 0, 0);
     background-color: var(--background-color);
     margin: 0;
     padding: 0;
@@ -20,13 +20,13 @@ body {
 }
 article{
     text-align: center;
-    border-radius: 10px solid var(--secondary-color);
+    border-radius: 0.625rem solid var(--secondary-color);
 }
 img {
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 30px;
+    border-radius: 1.875rem;
    
   }
 main h3 {
@@ -38,17 +38,17 @@ main h3 {
 }
 .grid button {
     background-color: var(--secondary-color);
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
     padding: 0.5rem 1rem;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
     transition: background-color 0.3s;
 }
 figure img {
-height: 427px;
+height: 26.6875rem;
 object-fit: cover;
 
 }
@@ -56,23 +56,67 @@ object-fit: cover;
     display: flex;
     justify-content: space-around;  
 }
+
+/* Estilo del carrito */
 #cart {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 300px; /* Ajusta según el tamaño deseado */
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 16px;
-    display: none; /* Oculta inicialmente */
-    z-index: 1000; /* Asegura que esté encima de otros elementos */
+    margin: 1.25rem;
+    padding: 1.25rem;
+    border: 0.0625rem solid rgb(221, 221, 221);
+    border-radius: 0.5rem;
+    background-color: var(--background-color);
 }
 
-#cart.hidden {
-    display: none; /* Aplica la clase para mantenerlo oculto */
+.cart-items {
+    margin: 0.625rem 0;
+    max-height: 12.5rem;
+    overflow-y: auto;
+    padding: 0.625rem;
+    border: 0.0625rem solid rgb(221, 221, 221);
+    background-color: rgb(249, 249, 249);
+    border-radius: 0.5rem;
 }
 
-#cart.visible {
-    display: block; /* Hace visible el carrito */
+.cart-items .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.625rem;
+    margin-bottom: 0.625rem;
+    border-bottom: 0.0625rem solid rgb(221, 221, 221);
+}
+
+.cart-items .cart-item img {
+    width: 3.125rem;
+    height: 3.125rem;
+    object-fit: cover;
+    border-radius: 0.3125rem;
+}
+
+.cart-items .cart-item button {
+    background-color: rgb(220, 53, 69);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    padding: 0.3125rem 0.625rem;
+    font-size: 0.8rem;
+}
+
+.cart-items .cart-item button:hover {
+    background-color: #c82333;
+}
+
+/* Botones adicionales */
+#vaciarCarrito {
+    margin-top: 0.625rem;
+    background-color: rgb(220, 53, 69);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 0.625rem 0.9375rem;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+}
+
+#vaciarCarrito:hover {
+    background-color: rgb(200, 35, 51);
 }

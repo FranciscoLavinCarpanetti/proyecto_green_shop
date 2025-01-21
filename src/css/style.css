@@ -11,13 +11,13 @@
 
 .btn-final{
     background-color: var(--primary-color);
-    color: #fff;
+    color: rgb(255, 255, 255);
     gap: 1.5rem;
    
 }
 .btn-fina2{
     background-color: var(--primary-color);
-    color: #fff;
+    color: rgb(255, 255, 255);
     gap: 1.5rem;
    
 }
