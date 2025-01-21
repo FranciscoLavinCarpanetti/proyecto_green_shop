@@ -86,6 +86,8 @@ selectTipo.addEventListener("change", filtrarProductos);*/
 
 
 
+
+
 //   // Referencias al DOM
 //   const productsContainer = document.getElementById("products");
 //   const cartItemsContainer = document.getElementById("cart-items");
