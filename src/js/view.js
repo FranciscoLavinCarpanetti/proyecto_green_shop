@@ -1,150 +1,3 @@
-/**document.addEventListener("DOMContentLoaded", () => {
-    // Obtener los primeros 20 productos
-    const primeros20Productos = productos.slice(0, 20);
-    const productosContainer = document.querySelector("#plantas .grid");
-    const cartItemsContainer = document.querySelector(".cart-items");
-    const tipoPlantaSelect = document.getElementById("tipoPlanta");
-    const vaciarCarritoBtn = document.querySelector("#vaciarCarrito");
-    const carrito = [];
-  
-    // Función para mostrar productos en la página
-    const mostrarProductos = (categoria = "Todas") => {
-      productosContainer.innerHTML = ""; // Limpiar contenido anterior
-      const productosFiltrados = categoria === "Todas" 
-        ? productos 
-        : productos.filter(producto => producto.categoria.toLowerCase().includes(categoria.toLowerCase()));
-  
-      productosFiltrados.forEach(producto => {
-        const articulo = document.createElement("article");
-        articulo.innerHTML = `
-          <figure>
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-          </figure>
-          <h3>${producto.nombre}</h3>
-          <ul>
-            <li>${producto.descripcion}</li>
-            <li>Precio: €${producto.precio.toFixed(2)}</li>
-          </ul>
-          <button class="btn btn-outline-primary" data-id="${producto.id}">Agregar al carrito</button>
-        `;
-        productosContainer.appendChild(articulo);
-      });
-    };
-  
-    // Función para actualizar el carrito
-
-    
-    const actualizarCarrito = () => {
-      cartItemsContainer.innerHTML = ""; // Limpiar carrito actual
-      if (carrito.length === 0) {
-        cartItemsContainer.innerHTML = "<p>El carrito está vacío.</p>";
-        return;
-      }
-  
-      carrito.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "cart-item";
-        div.innerHTML = `
-          <p>${item.nombre} - €${item.precio.toFixed(2)} x ${item.cantidad}</p>
-          <button class="btn btn-sm btn-danger" data-id="${item.id}">Eliminar</button>
-        `;
-        cartItemsContainer.appendChild(div);
-      });
-    };
-  
-    // Función para agregar un producto al carrito
-    const agregarAlCarrito = (id) => {
-      const producto = productos.find(p => p.id === id);
-      const itemEnCarrito = carrito.find(item => item.id === id);
-  
-      if (itemEnCarrito) {
-        itemEnCarrito.cantidad++;
-      } else {
-        carrito.push({ ...producto, cantidad: 1 });
-      }
-      actualizarCarrito();
-    };
-  
-    // Función para eliminar un producto del carrito
-    const eliminarDelCarrito = (id) => {
-      const index = carrito.findIndex(item => item.id === id);
-      if (index !== -1) {
-        carrito.splice(index, 1);
-      }
-      actualizarCarrito();
-    };
-  
-    // Event Listeners
-    productosContainer.addEventListener("click", (even) => {
-      if (e.target.tagName === "BUTTON") {
-        const id = parseInt(even.target.getAttribute("data-id"), 10);
-        agregarAlCarrito(id);
-      }
-    });
-  
-    cartItemsContainer.addEventListener("click", (even) => {
-      if (even.target.tagName === "BUTTON") {
-        const id = parseInt(e.target.getAttribute("data-id"), 10);
-        eliminarDelCarrito(id);
-      }
-    });
-  
-    tipoPlantaSelect.addEventListener("change", (even) => {
-      mostrarProductos(even.target.value);
-    });
-
-    // Inicializar productos
-    mostrarProductos();
-  });
-  // Función para agregar productos al carrito
-function agregarAlCarrito(producto) {
-    const confirmar = confirm(`¿Quieres agregar "${producto.nombre}" al carrito?`);
-    if (confirmar) {
-        // Lógica para agregar el producto al carrito
-        const cartItems = document.querySelector('.cart-items');
-
-        // Crear el elemento para el producto
-        const item = document.createElement('div');
-        item.className = 'cart-item';
-        item.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}" class="cart-img">
-            <span>${producto.nombre} - €${producto.precio.toFixed(2)}</span>
-            <button class="btn btn-sm btn-danger eliminar-item">Eliminar</button>
-        `;
-        cartItems.appendChild(item);
-
-        // Mostrar mensaje de éxito
-        alert(`"${producto.nombre}" fue agregado al carrito.`);
-    } else {
-        // Mostrar mensaje si se cancela
-        alert("El producto no fue agregado.");
-    }
-}
-
-
-
-// Función para vaciar el carrito
-
-
-
-function vaciarCarrito() {
-    const confirmar = confirm("¿Estás seguro de que deseas vaciar el carrito?");
-    if (confirmar) {
-        const cartItems = document.querySelector('.cart-items');
-        cartItems.innerHTML = '';
-        alert("El carrito ha sido vaciado.");
-    } else {
-        alert("El carrito no se vació.");
-    }
-}
-
-// Eventos iniciales
-document.addEventListener('DOMContentLoaded', () => {
-    mostrarProductos(); // Cargar productos al cargar la página
-
-    // Asignar evento al botón de vaciar carrito
-    document.getElementById('vaciarCarrito').addEventListener('click', vaciarCarrito);
-});*/
 
 document.addEventListener("DOMContentLoaded", () => {
   const productosContainer = document.querySelector("#plantas .grid");
@@ -240,14 +93,20 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarCarrito();
   };
 
-  // Función para eliminar un producto del carrito
-  const eliminarDelCarrito = (id) => {
-    const index = carrito.findIndex(item => item.id === id);
-    if (index !== -1) {
+  // Función para eliminar una unidad de un producto del carrito
+const eliminarDelCarrito = (id) => {
+  const itemEnCarrito = carrito.find(item => item.id === id); 
+
+  if (itemEnCarrito) {
+    itemEnCarrito.cantidad--; 
+    if (itemEnCarrito.cantidad === 0) {
+      const index = carrito.findIndex(item => item.id === id);
       carrito.splice(index, 1);
     }
-    actualizarCarrito();
-  };
+  }
+  actualizarCarrito(); // Actualizar la vista del carrito
+};
+
 
   // Función para cambiar de página
   const cambiarPagina = (direccion) => {
