@@ -56,26 +56,38 @@ object-fit: cover;
     display: flex;
     justify-content: space-around;  
 }
-
-/* Estilo del carrito */
+/* Contenedor principal del carrito */
 #cart {
-    margin: 1.25rem;
-    padding: 1.25rem;
-    border: 0.0625rem solid rgb(221, 221, 221);
-    border-radius: 0.5rem;
-    background-color: var(--background-color);
+    max-width: 60rem; /* Ajusta el ancho del carrito */
+    margin: 2rem auto; /* Centrar el carrito y dar separación del contenido circundante */
+    padding: 1.5rem;
+    background-color: rgb(255, 255, 255); /* Fondo blanco para resaltar el carrito */
+    border: 0.0625rem solid var(--secondary-color);
+    border-radius: 0.625rem; /* Bordes redondeados */
+    box-shadow: 0 0.3125rem 0.625rem rgba(0, 0, 0, 0.1); /* Sombra para un efecto de elevación */
 }
 
+/* Título del carrito */
+#cart h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+/* Lista de artículos en el carrito */
 .cart-items {
-    margin: 0.625rem 0;
-    max-height: 12.5rem;
-    overflow-y: auto;
+    margin-bottom: 1.5rem; /* Separación entre la lista de artículos y el resumen */
+    max-height: 15rem; /* Altura máxima de la lista de artículos */
+    overflow-y: auto; /* Scroll si la lista es demasiado larga */
     padding: 0.625rem;
     border: 0.0625rem solid rgb(221, 221, 221);
     background-color: rgb(249, 249, 249);
     border-radius: 0.5rem;
 }
 
+/* Estilo individual de cada artículo del carrito */
 .cart-items .cart-item {
     display: flex;
     justify-content: space-between;
@@ -85,6 +97,7 @@ object-fit: cover;
     border-bottom: 0.0625rem solid rgb(221, 221, 221);
 }
 
+/* Imagen dentro de cada artículo */
 .cart-items .cart-item img {
     width: 3.125rem;
     height: 3.125rem;
@@ -92,6 +105,7 @@ object-fit: cover;
     border-radius: 0.3125rem;
 }
 
+/* Botón para eliminar un artículo */
 .cart-items .cart-item button {
     background-color: rgb(220, 53, 69);
     color: rgb(255, 255, 255);
@@ -100,23 +114,88 @@ object-fit: cover;
     cursor: pointer;
     padding: 0.3125rem 0.625rem;
     font-size: 0.8rem;
+    font-weight: bold;
 }
 
 .cart-items .cart-item button:hover {
     background-color: #c82333;
 }
 
-/* Botones adicionales */
+/* Contenedor del resumen del carrito */
+#carritoResumen {
+    margin-bottom: 1.5rem; /* Espaciado con los botones */
+    padding: 1.25rem;
+    background-color: rgb(249, 249, 249);
+    border: 0.0625rem solid var(--secondary-color);
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+/* Texto del total de artículos y precio */
+#carritoResumen p {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Resaltar números */
+#carritoResumen p span {
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+}
+
+/* Botones del carrito */
+#cart button {
+    margin: 0.5rem 0.25rem; /* Espaciado entre botones */
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.3125rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/* Botón Comprar */
+#checkout {
+    background-color: rgb(40, 167, 69);
+    color: rgb(255, 255, 255);
+}
+
+#checkout:hover {
+    background-color: rgb(33, 136, 56);
+}
+
+/* Botón Vaciar carrito */
 #vaciarCarrito {
-    margin-top: 0.625rem;
     background-color: rgb(220, 53, 69);
     color: rgb(255, 255, 255);
-    border: none;
-    padding: 0.625rem 0.9375rem;
-    border-radius: 0.3125rem;
-    cursor: pointer;
 }
 
 #vaciarCarrito:hover {
     background-color: rgb(200, 35, 51);
+}
+
+/* Botones de navegación */
+.flex {
+    margin-top: 2rem; /* Espaciado con la sección anterior */
+    display: flex;
+    justify-content: space-around;  
+}
+
+.flex button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.flex button:hover {
+    background-color: var(--primary-color);
 }
