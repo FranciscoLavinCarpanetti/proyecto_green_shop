@@ -84,4 +84,34 @@ header .iconos a {
     border: 2px solid white; /* Borde blanco */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   }
+  .cart-item-controls {
+    display: flex;
+    gap: 0.5rem; /* Espacio entre botones */
+    margin-top: 0.5rem;
+  }
   
+  .cart-item-controls button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  
+  .cart-item-controls .increase {
+    background-color: rgb(40, 167, 69); /* Verde */
+    color: white;
+    border: none;
+  }
+  
+  .cart-item-controls .decrease {
+    background-color: rgb(255, 193, 7); /* Amarillo */
+    color: black;
+    border: none;
+  }
+  
+  .cart-item-controls .remove {
+    background-color: rgb(220, 53, 69); /* Rojo */
+    color: white;
+    border: none;
+  }
