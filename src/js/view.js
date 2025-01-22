@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const productosContainer = document.querySelector("#plantas .grid");
   const cartItemsContainer = document.querySelector(".cart-items");
@@ -9,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const comprarBtn = document.querySelector("#checkout"); // Botón comprar
   const totalArticulos = document.querySelector("#totalArticulos"); // Contador de artículos
   const totalPrecio = document.querySelector("#totalPrecio"); // Total acumulado
+  const cartBadge = document.querySelector("#cartBadge"); // Contador en el ícono del carrito
   const carrito = [];
 
   let paginaActual = 1; // Página inicial
@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
       cartItemsContainer.innerHTML = "<p>El carrito está vacío.</p>";
       totalArticulos.textContent = "Artículos: 0";
       totalPrecio.textContent = "Total: €0.00";
+      actualizarCartBadge(); // Actualizar contador en el ícono
       return;
     }
 
@@ -78,6 +79,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // Actualizar el resumen
     totalArticulos.textContent = `Artículos: ${totalCantidad}`;
     totalPrecio.textContent = `Total: €${totalCosto.toFixed(2)}`;
+    actualizarCartBadge(); // Actualizar contador en el ícono
+  };
+
+  // Función para actualizar el contador en el ícono del carrito
+  const actualizarCartBadge = () => {
+    const totalCantidad = carrito.reduce((total, item) => total + item.cantidad, 0);
+    cartBadge.textContent = totalCantidad;
+
+    // Ocultar el círculo si no hay artículos
+    if (totalCantidad === 0) {
+      cartBadge.style.display = "none";
+    } else {
+      cartBadge.style.display = "flex";
+    }
   };
 
   // Función para agregar un producto al carrito
@@ -94,19 +109,18 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Función para eliminar una unidad de un producto del carrito
-const eliminarDelCarrito = (id) => {
-  const itemEnCarrito = carrito.find(item => item.id === id); 
+  const eliminarDelCarrito = (id) => {
+    const itemEnCarrito = carrito.find(item => item.id === id); 
 
-  if (itemEnCarrito) {
-    itemEnCarrito.cantidad--; 
-    if (itemEnCarrito.cantidad === 0) {
-      const index = carrito.findIndex(item => item.id === id);
-      carrito.splice(index, 1);
+    if (itemEnCarrito) {
+      itemEnCarrito.cantidad--; 
+      if (itemEnCarrito.cantidad === 0) {
+        const index = carrito.findIndex(item => item.id === id);
+        carrito.splice(index, 1);
+      }
     }
-  }
-  actualizarCarrito(); // Actualizar la vista del carrito
-};
-
+    actualizarCarrito(); // Actualizar la vista del carrito
+  };
 
   // Función para cambiar de página
   const cambiarPagina = (direccion) => {
@@ -162,6 +176,7 @@ const eliminarDelCarrito = (id) => {
 
   comprarBtn.addEventListener("click", procesarCompra); // Evento para botón Comprar
 
-  // Inicializar productos
+  // Inicializar productos y contador del carrito
   mostrarProductos();
+  actualizarCartBadge();
 });
