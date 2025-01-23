@@ -1,42 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Referencias a los elementos del DOM
-  const productosContainer = document.querySelector("#plantas .grid");
-  const cartItemsContainer = document.querySelector(".cart-items");
-  const tipoPlantaSelect = document.getElementById("tipoPlanta");
-  const vaciarCarritoBtn = document.querySelector("#vaciarCarrito");
-  const anteriorBtn = document.querySelector(".Anterior");
-  const posteriorBtn = document.querySelector(".posterior");
-  const comprarBtn = document.querySelector("#checkout");
-  const totalArticulos = document.querySelector("#totalArticulos");
-  const totalPrecio = document.querySelector("#totalPrecio");
-  const cartBadge = document.querySelector("#cartBadge");
-  const shoppingIcon = document.querySelector("#shoppingIcon");
-  const cartSection = document.querySelector("#cart");
-  const carrito = [];
+  const productosContainer = document.querySelector("#plantas .grid"); // Contenedor de productos
+  const cartItemsContainer = document.querySelector(".cart-items"); // Contenedor del carrito
+  const tipoPlantaSelect = document.getElementById("tipoPlanta"); // Selector de categoría de plantas
+  const vaciarCarritoBtn = document.querySelector("#vaciarCarrito"); // Botón para vaciar el carrito
+  const anteriorBtn = document.querySelector(".Anterior"); // Botón para página anterior
+  const posteriorBtn = document.querySelector(".posterior"); // Botón para página siguiente
+  const comprarBtn = document.querySelector("#checkout"); // Botón para procesar compra
+  const totalArticulos = document.querySelector("#totalArticulos"); // Total de artículos en el carrito
+  const totalPrecio = document.querySelector("#totalPrecio"); // Precio total del carrito
+  const cartBadge = document.querySelector("#cartBadge"); // Badge del carrito (cantidad de productos)
+  const shoppingIcon = document.querySelector("#shoppingIcon"); // Ícono del carrito
+  const cartSection = document.querySelector("#cart"); // Sección del carrito
+  const carrito = []; // Arreglo para almacenar los productos en el carrito
 
   // Configuración inicial
-  let paginaActual = 1;
-  const productosPorPagina = 12;
+  let paginaActual = 1; // Número de la página actual
+  const productosPorPagina = 12; // Cantidad de productos por página
 
-  // Mostrar productos
+  // Función para mostrar productos en la página
   const mostrarProductos = (categoria = "Todas") => {
-    productosContainer.innerHTML = "";
+    productosContainer.innerHTML = ""; // Limpia el contenedor de productos
 
-    // Filtrar y ordenar productos
+    // Filtra los productos según la categoría seleccionada
     const productosFiltrados = categoria === "Todas"
-      ? productos
+      ? productos // Si no hay filtro, muestra todos los productos
       : productos.filter(producto =>
           producto.categoria.toLowerCase().includes(categoria.toLowerCase())
         );
 
+    // Ordena los productos de forma aleatoria
     const productosRandom = [...productosFiltrados].sort(() => Math.random() - 0.5);
 
-    // Paginar productos
+    // Paginación: calcula qué productos se deben mostrar en la página actual
     const inicio = (paginaActual - 1) * productosPorPagina;
     const fin = inicio + productosPorPagina;
     const productosPaginados = productosRandom.slice(inicio, fin);
 
-    // Renderizar productos
+    // Renderiza los productos en el DOM
     productosPaginados.forEach(producto => {
       const articulo = document.createElement("article");
       articulo.innerHTML = `
@@ -55,21 +56,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Actualizar carrito
+  // Función para actualizar el contenido del carrito
   const actualizarCarrito = () => {
-    cartItemsContainer.innerHTML = "";
-    let totalCantidad = 0;
-    let totalCosto = 0;
+    cartItemsContainer.innerHTML = ""; // Limpia el contenido actual del carrito
+    let totalCantidad = 0; // Total de unidades
+    let totalCosto = 0; // Precio total
 
     if (carrito.length === 0) {
+      // Muestra un mensaje si el carrito está vacío
       cartItemsContainer.innerHTML = "<p>El carrito está vacío.</p>";
       totalArticulos.textContent = "Artículos: 0";
       totalPrecio.textContent = "Total: €0.00";
-      actualizarCartBadge();
+      actualizarCartBadge(); // Actualiza el ícono del carrito
       return;
     }
 
-    // Renderizar cada producto en el carrito
+    // Renderiza cada producto dentro del carrito
     carrito.forEach(item => {
       totalCantidad += item.cantidad;
       totalCosto += item.precio * item.cantidad;
@@ -86,32 +88,35 @@ document.addEventListener("DOMContentLoaded", () => {
       cartItemsContainer.appendChild(div);
     });
 
-    // Actualizar el resumen del carrito
+    // Actualiza los totales de artículos y precio
     totalArticulos.textContent = `Artículos: ${totalCantidad}`;
     totalPrecio.textContent = `Total: €${totalCosto.toFixed(2)}`;
-    actualizarCartBadge();
+    actualizarCartBadge(); // Actualiza el ícono del carrito
   };
 
-  // Actualizar el ícono del carrito
+  // Función para actualizar el badge del carrito
   const actualizarCartBadge = () => {
     const totalCantidad = carrito.reduce((total, item) => total + item.cantidad, 0);
-    cartBadge.textContent = totalCantidad;
+    cartBadge.textContent = totalCantidad; // Muestra la cantidad de productos en el carrito
 
+    // Oculta el badge si no hay productos
     cartBadge.style.display = totalCantidad === 0 ? "none" : "flex";
   };
 
-  // Agregar producto al carrito
+  // Función para agregar un producto al carrito
   const agregarAlCarrito = (id) => {
-    const producto = productos.find(p => p.id === id);
-    const itemEnCarrito = carrito.find(item => item.id === id);
+    const producto = productos.find(p => p.id === id); // Busca el producto por ID
+    const itemEnCarrito = carrito.find(item => item.id === id); // Verifica si ya está en el carrito
 
     if (itemEnCarrito) {
+      // Incrementa la cantidad si ya está en el carrito
       if (itemEnCarrito.cantidad >= producto.stock) {
         alert(`No puedes agregar más unidades de ${producto.nombre}, no hay suficiente stock disponible.`);
         return;
       }
       itemEnCarrito.cantidad++;
     } else {
+      // Agrega un nuevo producto al carrito
       if (producto.stock <= 0) {
         alert(`No hay unidades disponibles de ${producto.nombre}.`);
         return;
@@ -119,10 +124,10 @@ document.addEventListener("DOMContentLoaded", () => {
       carrito.push({ ...producto, cantidad: 1 });
     }
 
-    actualizarCarrito();
+    actualizarCarrito(); // Actualiza el carrito
   };
 
-  // Eliminar producto del carrito
+  // Función para eliminar un producto del carrito
   const eliminarDelCarrito = (id) => {
     const itemEnCarrito = carrito.find(item => item.id === id);
 
@@ -130,48 +135,34 @@ document.addEventListener("DOMContentLoaded", () => {
       itemEnCarrito.cantidad--;
       if (itemEnCarrito.cantidad === 0) {
         const index = carrito.findIndex(item => item.id === id);
-        carrito.splice(index, 1);
+        carrito.splice(index, 1); // Elimina el producto del carrito si su cantidad llega a 0
       }
     }
     actualizarCarrito();
   };
 
-  // Incrementar la cantidad de un producto en el carrito
-  const incrementarCantidad = (id) => {
-    const producto = productos.find(p => p.id === id);
-    const itemEnCarrito = carrito.find(item => item.id === id);
-
-    if (itemEnCarrito) {
-      if (itemEnCarrito.cantidad >= producto.stock) {
-        alert(`No puedes agregar más unidades de ${producto.nombre}, no hay suficiente stock disponible.`);
-        return;
-      }
-      itemEnCarrito.cantidad++;
-      actualizarCarrito();
-    }
-  };
-
-  // Cambiar de página
+  // Función para cambiar entre páginas de productos
   const cambiarPagina = (direccion) => {
-    const totalPaginas = Math.ceil(productos.length / productosPorPagina);
+    const totalPaginas = Math.ceil(productos.length / productosPorPagina); // Calcula el total de páginas
 
+    // Cambia la página según la dirección
     if (direccion === "anterior" && paginaActual > 1) {
       paginaActual--;
     } else if (direccion === "posterior" && paginaActual < totalPaginas) {
       paginaActual++;
     }
 
-    mostrarProductos(tipoPlantaSelect.value);
+    mostrarProductos(tipoPlantaSelect.value); // Muestra los productos de la nueva página
   };
 
-  // Procesar la compra
+  // Función para procesar la compra
   const procesarCompra = () => {
     if (carrito.length === 0) {
       alert("El carrito está vacío. Agrega productos antes de comprar.");
       return;
     }
     alert("Gracias por su compra, el pedido está siendo preparado para el envío.");
-    carrito.length = 0;
+    carrito.length = 0; // Vacía el carrito después de la compra
     actualizarCarrito();
   };
 
@@ -180,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
     cartSection.classList.toggle("active");
   });
 
-  // Eventos
+  // Eventos para manejar clics en el carrito y productos
   productosContainer.addEventListener("click", (e) => {
     if (e.target.tagName === "BUTTON") {
       const id = parseInt(e.target.getAttribute("data-id"), 10);
@@ -191,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
   cartItemsContainer.addEventListener("click", (e) => {
     const id = parseInt(e.target.getAttribute("data-id"), 10);
     if (e.target.classList.contains("add-btn")) {
-      incrementarCantidad(id);
+      agregarAlCarrito(id);
     }
     if (e.target.classList.contains("remove-btn")) {
       eliminarDelCarrito(id);
@@ -199,21 +190,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   tipoPlantaSelect.addEventListener("change", (e) => {
-    paginaActual = 1;
-    mostrarProductos(e.target.value);
+    paginaActual = 1; // Reinicia a la primera página
+    mostrarProductos(e.target.value); // Muestra los productos de la categoría seleccionada
   });
 
-  anteriorBtn.addEventListener("click", () => cambiarPagina("anterior"));
-  posteriorBtn.addEventListener("click", () => cambiarPagina("posterior"));
+  anteriorBtn.addEventListener("click", () => cambiarPagina("anterior")); // Ir a la página anterior
+  posteriorBtn.addEventListener("click", () => cambiarPagina("posterior")); // Ir a la página siguiente
 
   vaciarCarritoBtn.addEventListener("click", () => {
-    carrito.length = 0;
+    carrito.length = 0; // Vacía el carrito
     actualizarCarrito();
   });
 
-  comprarBtn.addEventListener("click", procesarCompra);
+  comprarBtn.addEventListener("click", procesarCompra); // Procesa la compra
 
-  // Inicializar
-  mostrarProductos();
-  actualizarCartBadge();
+  // Inicializa la aplicación
+  mostrarProductos(); // Muestra los productos al cargar la página
+  actualizarCartBadge(); // Actualiza el badge del carrito
 });
