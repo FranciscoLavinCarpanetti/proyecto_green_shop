@@ -1,7 +1,22 @@
+// Este array contiene un listado de objetos, donde cada objeto representa un producto.
+// Cada producto tiene propiedades como:
+// - `id`: Identificador único del producto
+// - `nombre`: Nombre del producto
+// - `imagen`: URL de la imagen del producto
+// - `descripcion`: Breve descripción del producto
+// - `precio`: Precio en euros del producto
+// - `stock`: Cantidad disponible en inventario
+// - `categoria`: Clasificación del producto según sus características
 const productos = [
-    { id: 1, nombre: "Lirio blanco", imagen: "https://images.pexels.com/photos/8789648/pexels-photo-8789648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor en forma de campana de color blanco, con un gran aroma y detalles delicados. Ideal para bodas y eventos especiales.", precio: 10.00, stock: 20, 
-      categoria: "Flores Blancas."
-    },
+  {
+    id: 1,
+    nombre: "Lirio blanco", // Nombre de la flor
+    imagen: "https://images.pexels.com/photos/8789648/pexels-photo-8789648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", // Imagen del producto
+    descripcion: "Flor en forma de campana de color blanco, con un gran aroma y detalles delicados. Ideal para bodas y eventos especiales.", // Descripción detallada
+    precio: 10.00, // Precio del producto en euros
+    stock: 20, // Cantidad de unidades disponibles
+    categoria: "Flores Blancas." // Categoría de la flor
+  },
     { id: 2, nombre: "Rosa roja", imagen: "https://images.pexels.com/photos/2300713/pexels-photo-2300713.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Rosa clásica de pétalos aterciopelados de color rojo intenso. Símbolo del amor y la pasión.", precio: 12.50, stock: 30, categoria: "flor color." },
     { id: 3, nombre: "Tulipán amarillo", imagen: "https://images.pexels.com/photos/3834461/pexels-photo-3834461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor de tallo largo y pétalos amarillos vibrantes, perfecta para alegrar cualquier espacio.", precio: 8.00, stock: 25, categoria: "flor color." },
     { id: 4, nombre: "Margarita blanca", imagen: "https://images.pexels.com/photos/122957/pexels-photo-122957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor sencilla y alegre de pétalos blancos y centro amarillo, símbolo de pureza.", precio: 6.00, stock: 50, categoria: "flor blanca." },
@@ -33,5 +48,3 @@ const productos = [
   { id: 30, nombre: "Verbena morada", imagen: "https://images.pexels.com/photos/30259490/pexels-photo-30259490/free-photo-of-primer-plano-de-una-margarita-africana-morada-en-flor.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", descripcion: "Flor pequeña y aromática con pétalos morados, ideal para jardines y decoraciones exteriores.", precio: 7.00, stock: 50, categoria: "flor color." },
   ];
 
-// Obtener los primeros 20 productos
-const primeros20Productos = productos.slice(0, 20);
