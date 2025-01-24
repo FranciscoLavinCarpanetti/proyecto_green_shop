@@ -1,0 +1,89 @@
+@import url(reset.css);
+@import url('https://fonts.googleapis.com/css2?family=Arbutus+Slab&family=Athiti:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wdth,wght@0,75..125,100..900;1,75..125,100..900&family=Old+Standard+TT&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css');
+@import url(layout.css);
+@import url(header.css);
+@import url(main.css);
+@import url(footer.css);
+
+
+
+.btn-final{
+    background-color: var(--primary-color);
+    color: rgb(255, 255, 255);
+    gap: 1.5rem;
+   
+}
+.btn-fina2{
+    background-color: var(--primary-color);
+    color: rgb(255, 255, 255);
+    gap: 1.5rem;
+   
+}
+
+
+@media(min-width: 768px) {
+    #plantas .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }/* Cambia el número de columnas a 2 en pantallas medianas */
+}
+
+@media(min-width: 1004px) {
+    #plantas .grid {
+        grid-template-columns: repeat(4, 1fr);
+    } /* Cambia el número de columnas a 4 en pantallas grandes */
+}
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Cambia la dirección de los elementos a columna en pantallas pequeñas */
+        align-items: flex-start; /* Alinea los elementos al inicio */
+    }
+
+    header .container {
+        flex-direction: column; /* Cambia la dirección de los elementos a columna en pantallas pequeñas */
+        align-items: flex-start; /* Alinea los elementos al inicio */
+    }
+
+    header nav ul {
+        flex-direction: column; /* Cambia la dirección de los elementos a columna en pantallas pequeñas */
+        width: 100%; /* Asegura que el menú ocupe todo el ancho */
+    }
+
+    header nav ul li {
+        margin-left: 0; /* Elimina el margen izquierdo en pantallas pequeñas */
+        margin-bottom: 10px; /* Agrega margen inferior para separar los elementos */
+    }
+
+    header .iconos {
+        justify-content: flex-start; /* Alinea los iconos al inicio */
+        width: 100%; /* Asegura que los iconos ocupen todo el ancho */
+    }
+
+    header .iconos a {
+        margin-left: 0; /* Elimina el margen izquierdo en pantallas pequeñas */
+        margin-right: 20px; /* Agrega margen derecho para separar los iconos */
+    }
+}
+/* Estilos para pantallas grandes */
+@media (min-width: 1004px) {
+    header {
+        padding: 1.25rem 2rem;
+    }
+
+    header h2 {
+        font-size: 5rem; /* Texto grande para pantallas grandes */
+    }
+
+    header nav ul li {
+        margin-left: 1.25rem;
+    }
+
+    header .iconos a {
+        margin-left: 1.5rem; /* Más espacio entre íconos */
+    }
+
+    #plantas .grid {
+        grid-template-columns: repeat(4, 1fr); /* Cambia a 4 columnas */
+    }
+}

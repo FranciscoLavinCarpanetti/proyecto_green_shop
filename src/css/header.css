@@ -1,0 +1,123 @@
+/* Estilo general del header: posición fija, colores y diseño flexible */
+header {
+  background-color: var(--primary-color);
+  color: rgb(255, 255, 255);
+  border-bottom: 0.1875rem solid var(--secondary-color);
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor principal del header */
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Título principal del header */
+header h2 {
+  font-size: 5rem;
+  font-family: var(--secondary-font);
+  margin: 0;
+}
+
+/* Menú desplegable de selección de categorías */
+header select {
+  font-size: 1.25rem;
+  color: rgb(255, 255, 255);
+  padding: 0.625rem;
+  background-color: var(--secondary-color);
+  border: 0rem;
+  margin-left: 1.25rem;
+}
+
+/* Íconos del header */
+header .iconos {
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo del ícono del carrito */
+.shopping-icon {
+  position: relative;
+  font-size: 2rem;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+/* Insignia de cantidad de productos en el carrito */
+.cart-badge {
+  position: absolute;
+  top: -0.5rem;
+  right: 2.5rem;
+  background-color: rgb(220, 53, 69);
+  color: rgb(255, 255, 255);
+  font-size: 0.75rem;
+  font-weight: bold;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 2px solid rgb(255, 255, 255);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Controles de los productos en el carrito */
+.cart-item-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* Botón para aumentar la cantidad */
+.cart-item-controls .increase {
+  background-color: rgb(40, 167, 69);
+  color: rgb(255, 255, 255);
+  border: none;
+}
+
+/* Botón para disminuir la cantidad */
+.cart-item-controls .decrease {
+  background-color: rgb(255, 193, 7);
+  color: rgb(0, 0, 0);
+  border: none;
+}
+
+/* Botón para eliminar un producto */
+.cart-item-controls .remove {
+  background-color: rgb(220, 53, 69);
+  color: rgb(255, 255, 255);
+  border: none;
+}
+/* Navegación principal del header */
+header nav ul {
+  display: flex; 
+  list-style: none; 
+  
+}
+
+/* Enlaces dentro de la navegación */
+header nav ul li a {
+  color: rgb(255, 255, 255); 
+  text-decoration: none; 
+  font-size: 1.75rem; 
+  margin-left: 1rem; 
+  font-family: var(--secondary-font); 
+}
+
+/* Agrega un efecto hover a los enlaces para mejorar la interacción */
+header nav ul li a:hover {
+  color: var(--secondary-color); 
+  text-decoration: underline; 
+}
