@@ -6,18 +6,18 @@ Este proyecto es una tienda en línea de flores llamada "Green Shop".
 
 proyecto_green_shop/
 ├── README.md
-├── src/ │
-├── .gitignore │
+├── src/ 
+├── .gitignore 
 ├── assets/ │
-│ └── images/ │
- ├── css/ │
- │ ├── layout.css │
- │ ├── reset.css │
-  │ └── style.css │
-  ├── index.html │
-   ├── js/ │
-   │ ├── data.js │
-   │ └── view.js
+│ └── images/ 
+├── css/ 
+│ ├── layout.css 
+│ ├── reset.css 
+│ └── style.css 
+├── index.html 
+├── js/ │
+│ ├── data.js 
+│ └── view.js
 
 ## Descripción de Archivos
 
