@@ -64,5 +64,9 @@ Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
 
 ![home](https://github.com/user-attachments/assets/1f454552-361c-49a4-94f7-6ee65c344ca5)
+![filtro](https://github.com/user-attachments/assets/7080383b-3ba1-4ddf-9add-1702e0ea3667)
+![stock](https://github.com/user-attachments/assets/380198e0-c325-4c1f-a2f4-f6fd4985940f)
+![carrito](https://github.com/user-attachments/assets/4da2e4e4-78b5-4488-8dd8-0408db699a66)
+![footer](https://github.com/user-attachments/assets/29761402-792e-4bb9-ab52-adf518f97077)
 
 
