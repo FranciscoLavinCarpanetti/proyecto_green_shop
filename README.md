@@ -62,3 +62,7 @@ Si deseas contribuir a este proyecto, por favor sigue los siguientes pasos:
 ## Licencia
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
+
+![home](https://github.com/user-attachments/assets/1f454552-361c-49a4-94f7-6ee65c344ca5)
+
+
